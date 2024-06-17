@@ -6,24 +6,21 @@ import Button from '../Button';
 import { useState } from 'react';
 
 
-const Forms = () => {
-
-  const times = [
-  'Programação',
-  'Front-end',
-  'DevOps',
-  'Back-end'
-];
+const Forms = (props) => {
 
 const [nome, setNome] = useState('')
 const [cargo, setCargo] = useState('')
 const [imagem, setImagem] = useState('')
 const [time, setTime] = useState('')
 
-
 const onSave = (evento) => {
-  evento.preventDefault();
-  console.log('Formulário salvo', nome, cargo, imagem, time)
+  evento.preventDefault()
+  props.aoColaboradorCadastrado ({
+      nome: nome,
+      cargo: cargo,
+      imagem: imagem,
+      time: time
+  })
 }
 
   return (
@@ -54,7 +51,7 @@ const onSave = (evento) => {
         <DropDown
           required={true}
           label="Times"
-          itens={times}
+          itens={props.times}
           valor={time}
           aoAlterado={valor => setTime(valor)}
           />
