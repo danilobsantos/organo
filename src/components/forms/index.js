@@ -21,6 +21,9 @@ const onSave = (evento) => {
       imagem: imagem,
       time: time
   })
+  setNome('');
+  setCargo('');
+  setImagem('');
 }
 
   return (
